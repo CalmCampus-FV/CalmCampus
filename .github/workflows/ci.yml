@@ -38,6 +38,6 @@ jobs:
       - name: End-to-end in WebKit and Chromium
         working-directory: web
         run: |
-          npm i --no-save playwright@1.48.2
+          npm i --no-save playwright@1.48.2 axe-core@4.10.2
           npx playwright install --with-deps webkit chromium
           npm run e2e
