@@ -3,7 +3,7 @@ message: "If you use CalmCampus, please cite it as below."
 title: "CalmCampus: a privacy-first wellness companion for university students"
 type: software
 license: MIT
-repository-code: "https://github.com/lumenworksco/CalmCampus"
+repository-code: "https://github.com/CalmCampus-FV/CalmCampus"
 url: "https://cc.braunf.com/"
 date-released: "2026-10-18"
 authors:

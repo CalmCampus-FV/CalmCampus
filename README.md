@@ -2,7 +2,7 @@
 
 **A privacy-first wellness companion for university students.**
 
-[![CI](https://github.com/lumenworksco/CalmCampus/actions/workflows/ci.yml/badge.svg)](https://github.com/lumenworksco/CalmCampus/actions/workflows/ci.yml)
+[![CI](https://github.com/CalmCampus-FV/CalmCampus/actions/workflows/ci.yml/badge.svg)](https://github.com/CalmCampus-FV/CalmCampus/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 ![Platform: iOS](https://img.shields.io/badge/platform-iOS%2017%2B-blue.svg)
 ![Swift](https://img.shields.io/badge/Swift-SwiftUI%20%2B%20SwiftData-orange.svg)
@@ -25,7 +25,7 @@ Originally built for the **KU Leuven KICK Challenge 2026**.
 
 ## Status
 
-The project is being rebuilt as native apps: **SwiftUI on iOS first, then Kotlin/Jetpack Compose on Android**, so passive sensing (HealthKit, Screen Time, Health Connect) and on-device AI can use the platform APIs directly. The earlier Flutter prototype is preserved at git tag [`flutter-final`](https://github.com/lumenworksco/CalmCampus/tree/flutter-final).
+The project is being rebuilt as native apps: **SwiftUI on iOS first, then Kotlin/Jetpack Compose on Android**, so passive sensing (HealthKit, Screen Time, Health Connect) and on-device AI can use the platform APIs directly. The earlier Flutter prototype is preserved at git tag [`flutter-final`](https://github.com/CalmCampus-FV/CalmCampus/tree/flutter-final).
 
 | Area | State |
 |---|---|

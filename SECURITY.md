@@ -4,7 +4,7 @@ CalmCampus handles sensitive wellbeing data, so privacy and security reports are
 
 ## Reporting a vulnerability
 
-Please **do not open a public issue**. Use GitHub's private reporting instead: go to the [Security tab](https://github.com/lumenworksco/CalmCampus/security/advisories/new) and choose *Report a vulnerability*.
+Please **do not open a public issue**. Use GitHub's private reporting instead: go to the [Security tab](https://github.com/CalmCampus-FV/CalmCampus/security/advisories/new) and choose *Report a vulnerability*.
 
 Include what you found, how to reproduce it, and the impact. You can expect an initial response within a week.
 
