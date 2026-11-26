@@ -38,7 +38,7 @@ A small on-device model for the CalmCampus student wellbeing app. Given a studen
 | [CalmCampus/calmcampus-reframe-1.7b-bf16](https://huggingface.co/CalmCampus/calmcampus-reframe-1.7b-bf16) | The same model before quantisation (bfloat16), for converting or inspecting |
 | [CalmCampus/calmcampus-reframe-1.7b-lora](https://huggingface.co/CalmCampus/calmcampus-reframe-1.7b-lora) | The LoRA adapter on its own (67 MB) |
 | [CalmCampus/calmcampus-reframe-data](https://huggingface.co/datasets/CalmCampus/calmcampus-reframe-data) | The training, validation and held-out test data |
-| [Source code](https://github.com/lumenworksco/CalmCampus/tree/main/ml) | Training, evaluation and packaging scripts |
+| [Source code](https://github.com/CalmCampus-FV/CalmCampus/tree/main/ml) | Training, evaluation and packaging scripts |
 
 ## Prompt contract
 

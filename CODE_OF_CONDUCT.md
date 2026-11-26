@@ -8,4 +8,4 @@ Because CalmCampus is about student wellbeing, please also take extra care with 
 
 ## Reporting
 
-To report a violation, use GitHub's private channel: open a [private security advisory](https://github.com/lumenworksco/CalmCampus/security/advisories/new) and mark it as a conduct report. Maintainers will review it confidentially.
+To report a violation, use GitHub's private channel: open a [private security advisory](https://github.com/CalmCampus-FV/CalmCampus/security/advisories/new) and mark it as a conduct report. Maintainers will review it confidentially.
