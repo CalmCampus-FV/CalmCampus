@@ -1,6 +1,6 @@
 # Contributing to CalmCampus
 
-Thanks for your interest. CalmCampus is an early-stage student project, so small, focused changes are easiest to review.
+Thanks for your interest. CalmCampus is a student project, so small, focused changes are easiest to review.
 
 ## Before you start
 
@@ -17,13 +17,9 @@ These come from the product's principles and are not negotiable:
 
 ## Development
 
-```bash
-cd ios && xcodegen generate && open -a Xcode CalmCampus.xcodeproj
-xcodebuild test -project ios/CalmCampus.xcodeproj -scheme CalmCampus \
-  -destination 'platform=iOS Simulator,name=iPhone 16'
-```
+This repo is the research and design archive. For the app, the website or the demos, contribute to [CalmApp](https://github.com/CalmCampus-FV/CalmApp), [CalmWeb](https://github.com/CalmCampus-FV/CalmWeb), [CalmUni](https://github.com/CalmCampus-FV/CalmUni) or [CalmBiz](https://github.com/CalmCampus-FV/CalmBiz).
 
-Edit `project.yml`, not the generated `.xcodeproj`. Logic such as `CheckinPlanner` should stay pure and covered by unit tests. For the model in `ml/`, follow `ml/README.md`; large weights and run output stay out of git.
+For the model in `ml/`, follow `ml/README.md`; large weights and run output stay out of git. For the spike, edit `spike/project.yml`, not the generated `.xcodeproj`.
 
 ## Pull requests
 

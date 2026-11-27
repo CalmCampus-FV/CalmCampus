@@ -1,97 +1,54 @@
-# CalmCampus
-
-**A privacy-first wellness companion for university students.**
+# CalmCampus research and design archive
 
 [![CI](https://github.com/CalmCampus-FV/CalmCampus/actions/workflows/ci.yml/badge.svg)](https://github.com/CalmCampus-FV/CalmCampus/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-![Platform: iOS](https://img.shields.io/badge/platform-iOS%2017%2B-blue.svg)
-![Swift](https://img.shields.io/badge/Swift-SwiftUI%20%2B%20SwiftData-orange.svg)
-![Data: on-device only](https://img.shields.io/badge/data-on--device%20only-brightgreen.svg)
 
 [**cc.braunf.com**](https://cc.braunf.com/)
 
-<p align="center">
-  <img src="design/mockups/screenshots/home.png" width="230" alt="Home screen mockup">
-  <img src="design/mockups/screenshots/insights.png" width="230" alt="Insights screen mockup">
-  <img src="design/mockups/screenshots/profile.png" width="230" alt="Profile screen mockup">
-</p>
-<p align="center"><sub>Design mockups of the planned app screens.</sub></p>
+This repository is the research and design archive of **CalmCampus**, a student project by Florian Braùn and Hélène David: a weekly wellbeing check-in that takes less than a minute and keeps every answer on the phone. It holds the early research work and design material. The product itself now lives in separate repositories (below).
 
-CalmCampus helps students notice when stress is building up, using signals their phone already has (sleep, activity, screen time) plus a short daily check-in. It then offers brief, evidence-based exercises: breathing, grounding, progressive muscle relaxation, thought reframing and gratitude. **All data stays on the device.**
+> We are students, not medical professionals. CalmCampus does not diagnose or treat. If you need help, we strongly suggest a doctor or your student support service. If you are in crisis, contact your local emergency number or a crisis line.
 
-Originally built for the **KU Leuven KICK Challenge 2026**.
+## Where things live now
 
-> CalmCampus is a wellness tool, not a medical device. It does not diagnose or treat any condition and is no substitute for professional help. If you are in crisis, contact your local emergency number or a crisis line.
-
-## Status
-
-The project is being rebuilt as native apps: **SwiftUI on iOS first, then Kotlin/Jetpack Compose on Android**, so passive sensing (HealthKit, Screen Time, Health Connect) and on-device AI can use the platform APIs directly. The earlier Flutter prototype is preserved at git tag [`flutter-final`](https://github.com/CalmCampus-FV/CalmCampus/tree/flutter-final).
-
-| Area | State |
+| Repository | What it holds |
 |---|---|
-| Adaptive daily check-in (iOS) | Implemented, with unit-tested planner |
-| HealthKit sleep and step signals (iOS) | Implemented, behind a provider protocol so it can be tested without Apple Health data |
-| On-device reframing model | v0.1 research preview, see [`ml/`](ml/); weights and data on [Hugging Face](https://huggingface.co/CalmCampus) |
-| Feasibility spike | Done, see [`spike/`](spike/) |
-| Web preview for university reviewers (installable web app, one config per university, example phone data), see [`web/`](web/) | Implemented: the general version is on `main`, each university's version on its own branch |
-| Pilot with KU Leuven students (TestFlight) | Planned |
-| Android app | Planned |
+| [CalmApp](https://github.com/CalmCampus-FV/CalmApp) | The iOS app |
+| [CalmWeb](https://github.com/CalmCampus-FV/CalmWeb) | The website at [cc.braunf.com](https://cc.braunf.com/) and the forms platform |
+| [CalmUni](https://github.com/CalmCampus-FV/CalmUni) | University demos and prototypes: the reviewer preview web app (formerly `web/` here, with its history and per-university branches) |
+| [CalmBiz](https://github.com/CalmCampus-FV/CalmBiz) | Company demos and prototypes |
+| CalmCampus (this repo) | Research and design archive |
 
-## Roadmap
+`ios/` and `web/` were removed from this repo after they moved to CalmApp and CalmUni. Their full history is still here in git; the old university branches (`epfl-web-demo`, `quivr-web-demo`, `unil-web-demo`) are kept for reference, but new work happens in CalmUni. The earlier Flutter prototype is preserved at git tag [`flutter-final`](https://github.com/CalmCampus-FV/CalmCampus/tree/flutter-final).
 
-1. **Feasibility spike**: measure which signals iOS actually provides and how reliably.
-2. **iOS MVP**: real signals only, a calibration period for new users, on-device AI.
-3. **Pilot**: do passive signals track self-reported check-ins?
-4. **Android**: Kotlin/Compose with Health Connect, sharing the scoring engine.
-
-## Repository layout
+## What's in the archive
 
 ```
-ios/            The iOS app (SwiftUI + SwiftData, XcodeGen project)
-web/            Reviewer preview as an installable web app (PWA), one config file per university
-spike/          iOS feasibility spike (XcodeGen project)
-ml/             On-device reframing model: data, training, evaluation, model card
-design/         HTML mockups of the app screens, app icon and palette
+ml/       On-device thought-reframing language model: data, training, evaluation, model card (v0.1 research preview)
+spike/    iOS feasibility spike: which phone signals iOS actually provides (XcodeGen project)
+design/   HTML mockups of early app screens, app icon and colour palette
 ```
 
-## Getting started
+- **`ml/`**: a research preview, not part of any shipped app. See [`ml/README.md`](ml/README.md) and [`ml/MODEL_CARD.md`](ml/MODEL_CARD.md) for its evaluation and limitations. Weights and data are on [Hugging Face](https://huggingface.co/CalmCampus), not in git. It is not a crisis or safety tool.
+- **`spike/`**: a throwaway experiment, see [`spike/README.md`](spike/README.md). It needs macOS with Xcode and [XcodeGen](https://github.com/yonaskolb/XcodeGen).
+- **`design/`**: the mockups show early design ideas, not the current app. Open `design/mockups/*.html` in a browser.
 
-You need macOS with full Xcode and [XcodeGen](https://github.com/yonaskolb/XcodeGen) (`brew install xcodegen`). The `.xcodeproj` files are generated from `project.yml` and are not committed.
+## Principles that carried over
 
-```bash
-# Build and open the iOS app
-cd ios && xcodegen generate && open -a Xcode CalmCampus.xcodeproj
-
-# Run the unit tests (adjust the simulator name to one you have installed)
-xcodebuild test -project ios/CalmCampus.xcodeproj -scheme CalmCampus \
-  -destination 'platform=iOS Simulator,name=iPhone 16'
-```
-
-The web preview needs only Node 20+, see [`web/README.md`](web/README.md):
-
-```bash
-cd web && npm run check && npm test && npm run dev   # http://localhost:8080/
-```
-
-The reframing model has its own setup, see [`ml/README.md`](ml/README.md).
-
-## Design principles
-
-- **All data stays on-device.** No cloud storage, analytics or accounts. Users can delete all their data at any time.
-- **On-device AI only** (Apple Foundation Models, MLX, Gemini Nano). User text is never sent to a cloud API.
-- **No synthetic data in the product.** Every signal is real, missing or unavailable, never fabricated. The one exception is the web reviewer preview, whose example weeks and phone data are always labelled Example.
-- **Light-touch check-ins.** A small question budget, every question skippable, and no clinical screeners or self-harm items.
-- **Wellness wording, not medical claims.** The app "supports", it does not "detect burnout".
+- **All data stays on-device.** No cloud storage, analytics or accounts.
+- **On-device AI only.** User text is never sent to a cloud API.
+- **Wellness wording, not medical claims.** CalmCampus "supports"; it does not detect, diagnose or treat anything.
+- **Light-touch check-ins.** A small question budget, every question skippable, no clinical screeners or self-harm items.
 
 ## Contributing
 
-Issues and pull requests are welcome, see [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). To report a security or privacy problem, see [SECURITY.md](SECURITY.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). To report a security or privacy problem, see [SECURITY.md](SECURITY.md).
 
 ## Team
 
-- **Florian Braun**: Engineering Technology
-- **Helene David**: Economics and Business
+- **Florian Braùn**: Engineering Technology
+- **Hélène David**: Economics and Business
 
 ## License
 
-[MIT](LICENSE) © 2026 Florian Braun, Helene David. The fine-tuned model in `ml/` is derived from Qwen3-1.7B (Apache-2.0), see its [model card](ml/MODEL_CARD.md).
+[MIT](LICENSE) © 2026 Florian Braùn, Hélène David. The fine-tuned model in `ml/` is derived from Qwen3-1.7B (Apache-2.0), see its [model card](ml/MODEL_CARD.md).

@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "If you use CalmCampus, please cite it as below."
-title: "CalmCampus: a privacy-first wellness companion for university students"
+title: "CalmCampus: research and design archive"
 type: software
 license: MIT
 repository-code: "https://github.com/CalmCampus-FV/CalmCampus"
 url: "https://cc.braunf.com/"
 date-released: "2026-10-18"
 authors:
-  - family-names: Braun
+  - family-names: Braùn
     given-names: Florian
   - family-names: David
-    given-names: Helene
+    given-names: Hélène
