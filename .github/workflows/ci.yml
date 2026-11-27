@@ -1,43 +1,21 @@
 name: CI
 
+# Research and design archive: the iOS app moved to CalmApp and the web preview to CalmUni,
+# each with its own CI. This checks what is left here.
 on:
-  # Every branch: main and each university's branch (<id>-web-demo) are checked.
   push:
+    branches: [main]
   pull_request:
 
 jobs:
-  ios-tests:
-    runs-on: macos-15
+  archive:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Install XcodeGen
-        run: brew install xcodegen
-      - name: Generate project
-        run: cd ios && xcodegen generate
-      - name: Pick an iPhone simulator
+      - name: ml/ Python compiles
+        run: python3 -m py_compile ml/*.py ml/data/*.py
+      - name: README wording (no pilot claims, no banned phrases, no em dashes)
         run: |
-          ID=$(xcrun simctl list devices available | grep -E '^\s+iPhone' | head -1 | grep -oE '[0-9A-F]{8}-([0-9A-F]{4}-){3}[0-9A-F]{12}')
-          echo "SIM_ID=$ID" >> "$GITHUB_ENV"
-      - name: Unit tests
-        run: |
-          xcodebuild test -project ios/CalmCampus.xcodeproj -scheme CalmCampus \
-            -destination "platform=iOS Simulator,id=$SIM_ID" CODE_SIGNING_ALLOWED=NO
-
-  web:
-    # Pinned: the Playwright version below supports Ubuntu 24.04, not the Ubuntu 26
-    # that ubuntu-latest moves to from October 2026.
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 22
-      - name: Configs and strings, unit tests, build
-        working-directory: web
-        run: npm run check && npm test && npm run build
-      - name: End-to-end in WebKit and Chromium
-        working-directory: web
-        run: |
-          npm i --no-save playwright@1.48.2 axe-core@4.10.2
-          npx playwright install --with-deps webkit chromium
-          npm run e2e
+          if grep -n -i -E "early sign|stop burnout|pilot|—" README.md; then
+            echo "README.md uses wording CalmCampus does not use"; exit 1
+          fi
